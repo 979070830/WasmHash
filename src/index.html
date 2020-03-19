@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>WebAssembly implementation of MD5</title>
+	<style>
+		html, body{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		div.pageTitle{
+			font-size: 24px;
+			padding: 20px;
+			text-align: center;
+		}
+		input {
+			width: 260px
+		}
+		div.section{
+			padding: 10px;
+		}
+		div.sectionRow{
+			padding: 10px;
+		}
+		div.inputLabel{
+			text-transform: uppercase;
+			color: gray;
+			font-size: 11px;
+		}
+	</style>
+	<script src="main.js"></script>
+	<script>
+    	window.addEventListener('load', (event) => {
+		console.log('page is fully loaded');
+		
+		let md5hashFromString, md5hashFromBuffer;		
+		
+		Module['onRuntimeInitialized'] = () => {
+			console.log("wasm loaded ");
+			//using cwrap
+			md5hashFromString = Module.cwrap('md5_hash_from_string','string',['string']);
+			md5hashFromBuffer = Module.cwrap('md5_hash_from_buffer','string',['pointer','number']);
+		}
+		
+		document.getElementById("calculateHashFromInputField").addEventListener("click", () => {
+			const inputString = document.getElementById("input_string").value;
+			//run the md5 function
+			const hash =  md5hashFromString(inputString)
+			//output the hash
+			document.getElementById("string_input_hash").value = hash;
+		});
+
+		const control = document.getElementById("fileSelection");
+		control.addEventListener("change", function(event) {
+			const reader = new FileReader();
+			reader.onload = function() {
+				const arrayBuffer = this.result;
+				//create  Uint8Array byte array
+				const data = new Uint8Array(arrayBuffer);
+				//calculate the required HEAP size
+				const nDataBytes = data.length * data.BYTES_PER_ELEMENT;
+				//allocate HEAP memory
+				const dataPtr = Module._malloc(nDataBytes);
+				//copy the data to the allocated HEAP memory
+				Module.HEAPU8.set(data, dataPtr);
+				//run the md5 function
+				const hash = md5hashFromBuffer(dataPtr, nDataBytes);
+				//free the allocated HEAP memory
+				Module._free(dataPtr);
+				//output the hash
+				document.getElementById("file_hash").value = hash;
+			}
+			reader.readAsArrayBuffer(this.files[0]);
+		}, false);
+
+	});
+	</script>
+	</head>
+	<body>
+		<div class="pageTitle">WebAssembly implementation of MD5</div>
+		<div class="section">
+			<div class="sectionRow">
+				<div class="inputLabel">Calculate MD5 from an input string</div>
+				<input type="text" name="input_string" id="input_string">
+			</div>
+			<div class="sectionRow">
+				<div class="inputLabel">MD5 hash result</div>
+			<input type="text" name="string_input_hash" id="string_input_hash" readonly>
+			<button id="calculateHashFromInputField">Calculate MD5 hash</button>
+			</div>
+		</div>
+		<div class="section">
+			<div class="sectionRow">
+				<div class="inputLabel">Calculate MD5 from a local file</div>
+				<input type="file" id="fileSelection">
+			</div>
+			<div class="sectionRow">
+				<div class="inputLabel">MD5 hash result</div>
+				<input type="text" name="file_hash" id="file_hash" readonly>
+			</div>
+		</div>
+	</body>
+</html>
