@@ -1,12 +1,22 @@
 # WasmUtil
-WasmUtil is a WebAssembly implementation for some general purpose functions. It is written in C++ with some JavaScript glue code. The C++ code was compiled into WebAssembly with Emscripten 1.39.8.
+WasmUtil is a WebAssembly implementation of some general purpose functions. It is written in C++ with some JavaScript glue code. The C++ code was compiled into WebAssembly with Emscripten 1.39.8.
 
 ### Functions
  - md5_hash_from_string - generates an MD5 hash from a string
  - md5_hash_from_buffer - generates an MD5 hash from a Uint8array
+ - sha1_hash_from_string - generates a SHA1 hash from a string
+ - sha1_hash_from_buffer - generates a SHA1 hash from a Uint8array
+ - sha224_hash_from_string - generates an SHA224 hash from a string
+ - sha224_hash_from_buffer - generates an SHA224 hash from a Uint8array
+ - sha256_hash_from_string - generates an SHA256 hash from a string
+ - sha256_hash_from_buffer - generates an SHA256 hash from a Uint8array
+ - sha384_hash_from_string - generates an SHA384 hash from a string
+ - sha384_hash_from_buffer - generates an SHA384 hash from a Uint8array
+ - sha512_hash_from_string - generates an SHA512 hash from a string
+ - sha512_hash_from_buffer - generates an SHA512 hash from a Uint8array
  
 ### Performance
- Preformance of the MD5 hashing functions in the WebAssembly implementation was compared to a JavaScript implementation. Test was done in Chrome.
+ Preformance was measured for the MD5 hashing function in a WebAssembly implementation in comparison to a JavaScript implementation. Test was done in Chrome.
  - For small strings in a range of a few bytes we do not see a significant performance boost. JavaScript implementation can even be faster due to the WebAssembly call overhead.
  - We start seeing s significant difference when the input data exceeds 1 kB. When hashing large amounts of data we can expect a 5x performance boost compared to a JavaScript implementation.
  
@@ -32,13 +42,20 @@ http-server -p 8080
 Open the example page in a web browser on the url: http://localhost:8080
 
 ### Known limitations
-Function md5_hash_from_string can fail if we pass a large string (larger than 1 MB). If you plan to hash large amounts of data, you should use md5_hash_from_buffer function.
+Hashing functions with input parameter string can fail if we pass a large string (larger than 1 MB). If you plan to hash large amounts of data, you should use functions with input parameter buffer.
 
 ## Credits
-C++ implementation of the MD5 algoritm (RSA Data Security, Inc. MD5 Message-Digest
-Algorithm):
+C++ implementation of the MD5 algorithm (RSA Data Security, Inc. MD5 Message-Digest Algorithm):
 
 http://www.zedwood.com/article/cpp-md5-function
+
+C++ implementation of the SHA1 algorithm
+
+http://www.zedwood.com/article/cpp-sha1-function
+
+C++ implementation of the SHA2 algorithm
+
+http://www.zedwood.com/article/cpp-sha1-function
 
 ## License
 WasmUtil is licensed under the MIT license.
