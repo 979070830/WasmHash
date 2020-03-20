@@ -26,6 +26,7 @@ npm install http-server -g
 Serve from the project source folder:
 
 cd src
+
 http-server -p 8080
 
 Open the example page in a web browser on the url: http://localhost:8080
