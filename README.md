@@ -53,11 +53,11 @@ C++ implementation of the MD5 algorithm (RSA Data Security, Inc. MD5 Message-Dig
 
 http://www.zedwood.com/article/cpp-md5-function
 
-C++ implementation of the SHA1 algorithm
+C++ implementation of the SHA1 algorithm:
 
 http://www.zedwood.com/article/cpp-sha1-function
 
-C++ implementation of the SHA2 algorithm
+C++ implementation of the SHA2 algorithm:
 
 http://www.zedwood.com/article/cpp-sha1-function
 
