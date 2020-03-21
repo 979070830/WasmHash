@@ -31,7 +31,7 @@ To execute WebAssembly functions in your browser you need a wasm file (compiled 
 ### Example
 A live example page can be found at:
 
-https://bpajk.github.io/WasmHash/
+https://bpajk.github.io/WasmHash
 
 To run the example web page localy, you have to serve it with a web server. You can install a http-server with npm:
 
