@@ -6,7 +6,7 @@
  */
 
 // Compiled with emscripten 1.39.8
-// em++ main.cpp md5.cpp sha1.cpp sha2.cpp -o main.js -s "EXPORTED_FUNCTIONS=['_md5_hash_from_string', '_md5_hash_from_buffer', '_sha1_hash_from_string', '_sha1_hash_from_buffer', '_sha224_hash_from_string', '_sha224_hash_from_buffer', '_sha256_hash_from_string', '_sha256_hash_from_buffer', '_sha384_hash_from_string', '_sha384_hash_from_buffer', '_sha512_hash_from_string', '_sha512_hash_from_buffer']" -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall','cwrap']" -s ALLOW_MEMORY_GROWTH=1
+// em++ main.cpp md5.cpp sha1.cpp sha2.cpp -o ../docs/main.js -s "EXPORTED_FUNCTIONS=['_md5_hash_from_string', '_md5_hash_from_buffer', '_sha1_hash_from_string', '_sha1_hash_from_buffer', '_sha224_hash_from_string', '_sha224_hash_from_buffer', '_sha256_hash_from_string', '_sha256_hash_from_buffer', '_sha384_hash_from_string', '_sha384_hash_from_buffer', '_sha512_hash_from_string', '_sha512_hash_from_buffer']" -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall','cwrap']" -s ALLOW_MEMORY_GROWTH=1
 
 #include <iostream>
 #include "md5.h"

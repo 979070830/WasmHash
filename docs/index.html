@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>WasmUtil</title>
+	<title>WasmHash</title>
+	<meta name="description" content="WebAssembly implementation of hashing algorithms">
+	<meta name="keywords" content="WebAssembly,C++,MD5,SHA1,SHA2,SHA224,SHA256,SHA384,SHA512">
+	<meta name="author" content="Benjamin Pajk">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		html, body{
 			font-family: Arial, Helvetica, sans-serif;
 		}
 		div.pageTitle{
 			font-size: 24px;
-			padding: 20px;
+			padding: 10px;
+			text-align: center;
+		}
+		div.pageSubTitle{
+			font-size: 20px;
+			padding: 10px;
 			text-align: center;
 		}
 		input.inputString {
@@ -131,7 +140,8 @@
 	</script>
 	</head>
 	<body>
-		<div class="pageTitle">WebAssembly implementation of hashing algorithms</div>
+		<div class="pageTitle">WasmHash</div>
+		<div class="pageSubTitle">WebAssembly implementation of hashing algorithms</div>
 		<div class="section">
 			<div class="sectionRow">
 				<div class="inputLabel">hash algorithm</div>
