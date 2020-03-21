@@ -29,9 +29,9 @@ git clone https://github.com/bpajk/WasmHash.git
 To execute WebAssembly functions in your browser you need a wasm file (compiled WebAssembly) and JavaScript glue code. Both are provided in this project (main.wasm and main.js). You can call the WebAssembly functions by loading the main.js script and using ccall or cwrap methods. Usage of the cwrap method is provided in the index.html example.
 
 ### Example
-A live example can be found at:
+A live example page can be found at:
 
-https://bpajk.github.io/WasmHash/src/
+https://bpajk.github.io/WasmHash/
 
 To run the example web page localy, you have to serve it with a web server. You can install a http-server with npm:
 
