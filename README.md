@@ -1,5 +1,5 @@
-# WasmUtil
-WasmUtil is a WebAssembly implementation of some general purpose functions. It is written in C++ with some JavaScript glue code. The C++ code was compiled into WebAssembly with Emscripten 1.39.8.
+# WasmHash
+WasmHash is a WebAssembly implementation of some general hashing functions. It is written in C++ with some JavaScript glue code. The C++ code was compiled into WebAssembly with Emscripten 1.39.8.
 
 ### Functions
  - md5_hash_from_string - generates an MD5 hash from a string
@@ -23,7 +23,7 @@ WasmUtil is a WebAssembly implementation of some general purpose functions. It i
 # Installation
 Clone the repository
 
-git clone https://github.com/bpajk/WasmUtil.git
+git clone https://github.com/bpajk/WasmHash.git
 
 # Usage
 To execute WebAssembly functions in your browser you need a wasm file (compiled WebAssembly) and JavaScript glue code. Both are provided in this project (main.wasm and main.js). You can call the WebAssembly functions by loading the main.js script and using ccall or cwrap methods. Usage of the cwrap method is provided in the index.html example.
@@ -31,7 +31,7 @@ To execute WebAssembly functions in your browser you need a wasm file (compiled 
 ### Example
 A live example can be found at:
 
-https://bpajk.github.io/WasmUtil/src/
+https://bpajk.github.io/WasmHash/src/
 
 To run the example web page localy, you have to serve it with a web server. You can install a http-server with npm:
 
