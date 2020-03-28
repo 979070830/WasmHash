@@ -39,7 +39,7 @@ npm install http-server -g
 
 Serve from the project source folder:
 
-cd src
+cd docs
 
 http-server -p 8080
 
