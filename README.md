@@ -16,9 +16,9 @@ WasmHash is a WebAssembly implementation of some general hashing functions. It i
  - sha512_hash_from_buffer - generates an SHA512 hash from a Uint8array
  
 ### Performance
- Preformance was measured for the MD5 hashing function in a WebAssembly implementation in comparison to a JavaScript implementation. Test was done in Chrome.
- - For small strings in a range of a few bytes we do not see a significant performance boost. JavaScript implementation can even be faster due to the WebAssembly call overhead.
- - We start seeing s significant difference when the input data exceeds 1 kB. When hashing large amounts of data we can expect a 5x performance boost compared to a JavaScript implementation.
+ Preformance was measured for the MD5 hashing function in a WebAssembly implementation in comparison to a JavaScript implementation. The WebAssembly build was optimised with -O3 attribute. Test was done in Chrome.
+ - For small strings in a range of a few bytes we do not see a significant performance boost. This is due to WebAssembly call overhead.
+ - We can expect up to 20x performance boost compared to a JavaScript implementation when the input data is in the Megabyte range.
  
 # Installation
 Clone the repository
