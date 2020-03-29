@@ -20,15 +20,15 @@ WasmHash is a WebAssembly implementation of some general hashing functions. It i
  - For small strings in a range of a few bytes we do not see a significant performance boost. This is due to WebAssembly call overhead.
  - We can expect up to 20x performance boost compared to a JavaScript implementation when the input data is in the Megabyte range.
  
-# Installation
+## Installation
 Clone the repository
 
 git clone https://github.com/bpajk/WasmHash.git
 
-# Usage
+## Usage
 To execute WebAssembly functions in your browser you need a wasm file (compiled WebAssembly) and JavaScript glue code. Both are provided in this project (main.wasm and main.js). You can call the WebAssembly functions by loading the main.js script and using ccall or cwrap methods. Usage of the cwrap method is provided in the index.html example.
 
-### Example
+## Example
 A live example page can be found at:
 
 https://bpajk.github.io/WasmHash
@@ -45,7 +45,7 @@ http-server -p 8080
 
 Open the example page in a web browser on the url: http://localhost:8080
 
-### Known limitations
+## Known limitations
 Hashing functions with input parameter string can fail if we pass a large string (larger than 1 MB). If you plan to hash large amounts of data, you should use functions with input parameter buffer.
 
 ## Credits
